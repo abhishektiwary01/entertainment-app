@@ -137,8 +137,7 @@ const CardContainer = () => {
 
   return (
     <div className="mx-auto max-w-full lg:max-w-screen-xl">
-      <Navbar />
-     
+      
       <h1 className="text-2xl text-start text-white p-4">Trending</h1>
       <div className="flex flex-wrap justify-start gap-8">
         {cardsData.map((card, index) => (

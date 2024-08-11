@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../models/Firebase';
+import { MdMovieCreation } from 'react-icons/md';
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');
@@ -17,12 +18,10 @@ const SignupPage = () => {
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser; 
-      console.log(user);
-      console.log("User registered successfully");
+      console.log('User registered successfully');
       navigate('/loginpage'); // Redirect to login page after successful signup
     } catch (error) {
-      setError(error.message);
+      setError('Registration failed. Please try again.');
     }
   };
 
@@ -43,9 +42,13 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-transparent">
-      <div className="w-full max-w-sm bg-slate-900 shadow-md rounded-lg p-8 border-slate-900">
-        <h2 className="text-2xl font-bold mb-6 text-start text-white">Sign Up</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
+      <div className="mb-8 text-center">
+        <MdMovieCreation size={48} className="text-red-600 mx-auto" aria-label="App Logo" />
+        <p className="text-white text-3xl mt-2">Entertainment App</p>
+      </div>
+      <div className="w-full max-w-sm bg-slate-900 shadow-md rounded-lg p-8 border border-slate-700">
+        <h2 className="text-2xl font-bold mb-6 text-white">Sign Up</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -57,6 +60,7 @@ const SignupPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
           </div>
           <div className="mb-4">
@@ -68,6 +72,7 @@ const SignupPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
           </div>
           <div className="mb-6">
@@ -79,6 +84,7 @@ const SignupPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
           </div>
           <button
@@ -87,11 +93,11 @@ const SignupPage = () => {
           >
             Sign Up
           </button>
-          <p className='text-white mt-3 flex items-center'>
+          <p className="text-white mt-3 flex items-center justify-center">
             Already have an account?
             <span
               onClick={handleLoginClick}
-              className='ml-1 text-red-600 hover:text-white cursor-pointer'
+              className="ml-1 text-red-600 hover:text-white cursor-pointer"
             >
               Login
             </span>

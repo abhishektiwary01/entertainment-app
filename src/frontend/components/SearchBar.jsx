@@ -16,7 +16,7 @@ const SearchBar = () => {
         .then(response => {
           // Filter out results without a poster and limit to 6 results
           const filteredResults = response.data.Search
-            ? response.data.Search.filter(item => item.Poster !== 'N/A').slice(0, 6)
+            ? response.data.Search.filter(item => item.Poster !== 'N/A').slice(0, 3)
             : [];
           setResults(filteredResults);
         })
@@ -68,15 +68,15 @@ const SearchBar = () => {
         </div>
       </form>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-20">
         {results.length > 0 && (
           <div className="flex flex-wrap justify-start">
             {results.map(result => (
               <div
                 key={result.imdbID}
-                className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+                className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
               >
-                <div className="bg-gray-800 rounded-lg overflow-hidden">
+                <div className="bg-gray-800 rounded-lg overflow-hidden ">
                   <img
                     src={result.Poster}
                     alt={result.Title}
