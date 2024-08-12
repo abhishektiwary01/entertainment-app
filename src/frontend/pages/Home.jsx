@@ -6,9 +6,11 @@ import SearchBar from '../components/SearchBar';
 import { CiBookmarkCheck } from 'react-icons/ci';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 
+// Component for displaying individual movie cards
 const CardsData = ({ title, description, image, year, cast, rating, duration }) => {
   const navigate = useNavigate();
 
+  // Function to handle the play button click
   const handlePlayClick = () => {
     navigate('/detailpage', { 
       state: { 
@@ -33,12 +35,14 @@ const CardsData = ({ title, description, image, year, cast, rating, duration }) 
         <p className="text-xs sm:text-sm">{description}</p>
       </div>
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Bookmark button */}
         <button 
           aria-label={`Bookmark ${title}`} 
           className="absolute top-2 right-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 focus:bg-red-500 transition-colors"
         >
           <CiBookmarkCheck className="text-xl sm:text-2xl text-gray-200 hover:text-gray-700 focus:text-white transition-colors" />
         </button>
+        {/* Play button */}
         <button 
           onClick={handlePlayClick} 
           className="flex items-center justify-center space-x-2 mb-6 p-2 rounded-3xl bg-transparent group-hover:bg-slate-200 transition-colors"
@@ -51,9 +55,11 @@ const CardsData = ({ title, description, image, year, cast, rating, duration }) 
   );
 };
 
+// Component for displaying recommended movie cards
 const RecommendedCard = ({ title, description, image, year, cast, rating, duration }) => {
   const navigate = useNavigate();
 
+  // Function to handle the play button click
   const handlePlayClick = () => {
     navigate('/detailpage', { 
       state: { 
@@ -78,12 +84,14 @@ const RecommendedCard = ({ title, description, image, year, cast, rating, durati
         <p className="text-xs sm:text-sm">{description}</p>
       </div>
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Bookmark button */}
         <button 
           aria-label={`Bookmark ${title}`} 
           className="absolute top-2 right-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 focus:bg-red-500 transition-colors"
         >
           <CiBookmarkCheck className="text-xl sm:text-2xl text-gray-200 hover:text-gray-700 focus:text-white transition-colors" />
         </button>
+        {/* Play button */}
         <button 
           onClick={handlePlayClick} 
           className="flex items-center justify-center space-x-2 p-2 rounded-3xl bg-transparent group-hover:bg-slate-200 transition-colors"
@@ -96,17 +104,21 @@ const RecommendedCard = ({ title, description, image, year, cast, rating, durati
   );
 };
 
+// Main container component for displaying movie cards
 const CardContainer = () => {
   const [cardsData, setCardsData] = useState([]);
   const [recommendedCards, setRecommendedCards] = useState([]);
 
+  // Fetch movie data from the API when the component mounts
   useEffect(() => {
     axios.get('https://www.omdbapi.com/?i=tt3896198&apikey=d4a9f7e&s=Tv+series')
       .then(response => {
         const movies = response.data.Search;
 
+        // Filter out movies without posters
         const filteredMovies = movies.filter(movie => movie.Poster !== 'N/A');
 
+        // Separate trending and recommended cards
         const trendingCards = filteredMovies.slice(0, 3).map(movie => ({
           title: movie.Title,
           description: `Year: ${movie.Year}`,
@@ -136,8 +148,8 @@ const CardContainer = () => {
 
   return (
     <div className="mx-auto max-w-full lg:max-w-screen-xl ">
-      
-      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-4 sm:ml-28 p-4">Trending</h1>
+      {/* Trending section */}
+      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-2 sm:ml-28 p-4">Trending</h1>
       <div className="flex flex-wrap justify-start gap-8 ">
         {cardsData.map((card, index) => (
           <CardsData
@@ -152,7 +164,8 @@ const CardContainer = () => {
           />
         ))}
       </div>
-      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-4 sm:ml-28 p-4 mt-4">Recommended for you</h1>
+      {/* Recommended section */}
+      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-2 sm:ml-28 p-4 mt-4">Recommended for you</h1>
       <div className="flex flex-wrap justify-start gap-4">
         {recommendedCards.map((card, index) => (
           <RecommendedCard
@@ -171,6 +184,7 @@ const CardContainer = () => {
   );
 };
 
+// Main Home component
 const Home = () => {
   return (
     <div>

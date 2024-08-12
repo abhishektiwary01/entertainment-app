@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Navbar from '../components/Navbar';
-import SearchBar from '../components/SearchBar';
-import { CiBookmarkCheck } from 'react-icons/ci';
+import axios from 'axios'; //axios for making HTTP request
+import Navbar from '../components/Navbar'; // import navbar
+import SearchBar from '../components/SearchBar'; //import searchbar
+import { CiBookmarkCheck } from 'react-icons/ci';   
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom'; 
 
 const handleBookmark = async () => {
-  navigate('/bookmarks');
+  navigate('/bookmarks');  //navigates to bookmarks page 
 };
 
 const MoviesCard = ({ title, description, image, year, cast, rating, duration }) => {
@@ -25,7 +25,6 @@ const MoviesCard = ({ title, description, image, year, cast, rating, duration })
   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
     <button 
       onClick={handleBookmark}
-      // aria-label={`Bookmark ${title}`} 
       className='absolute top-2 right-2 p-2 rounded-full bg-gray-700 hover:bg-white focus:bg-red-500 transition-colors'
     >
       <CiBookmarkCheck className='text-xl text-gray-200 hover:text-gray-700 focus:text-white transition-colors' />

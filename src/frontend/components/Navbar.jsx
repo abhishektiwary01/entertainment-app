@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import { HiHome } from 'react-icons/hi';
-import { MdLocalMovies, MdMovieCreation } from 'react-icons/md';
-import { PiTelevisionBold } from 'react-icons/pi';
-import { CiBookmarkCheck } from 'react-icons/ci';
-import { NavLink } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import { HiHome } from 'react-icons/hi'; //import home icon
+import { MdLocalMovies, MdMovieCreation } from 'react-icons/md'; //import movie icons
+import { PiTelevisionBold } from 'react-icons/pi'; // import TV icons
+import { CiBookmarkCheck } from 'react-icons/ci'; // import bookmark icons
+import { NavLink } from 'react-router-dom';  // import nav link for links
 
 const Navbar = () => {
-  const { loginWithRedirect, logout } = useAuth0();
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleLogout = () => {
-    logout({ returnTo: window.location.origin });
-  };
 
   return (
     <div className="fixed top-0 left-0 h-4/5 w-16 bg-gray-900 rounded-xl flex flex-col items-center py-4 mt-6 ml-6">
+      {/* App Logo */}
       <MdMovieCreation className="text-3xl mb-6 text-red-700" />
 
+      {/* Navigation Links */}
       <NavLink
         to="/home"
         className={({ isActive }) =>
@@ -54,6 +50,7 @@ const Navbar = () => {
         <CiBookmarkCheck className="text-3xl mb-6" />
       </NavLink>
 
+      {/* Profile Image with Logout */}
       <div
         className="relative mt-auto mb-6"
         onMouseEnter={() => setIsHovered(true)}
@@ -71,7 +68,7 @@ const Navbar = () => {
             className="w-12 h-12 mb-10 rounded-full overflow-hidden border-none bg-transparent cursor-pointer shadow-lg"
             src="src/assets/Loginphoto.jpg"
             alt="Login Image"
-            onClick={handleLogout}
+            // Removed onClick handler for logout
           />
         </NavLink>
         {isHovered && (

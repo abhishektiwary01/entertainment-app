@@ -6,10 +6,12 @@ import { CiBookmarkCheck } from 'react-icons/ci';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom'; 
 
+// Component for displaying individual TV cards
 const TvSeriesCard = ({ title, description, image, year, cast, rating, duration, onBookmarkClick }) => {
   
   const navigate = useNavigate(); 
 
+   // Function to handle the play button click
   const handlePlayClick = () => {
     navigate('/detailpage', { 
       state: { 
