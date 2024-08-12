@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../models/Firebase';
 import { MdMovieCreation } from 'react-icons/md';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Loginpage = () => {
-  // State variables for email, password, and error messages
+  // State variables for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
   
   // Hook to programmatically navigate to different routes
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Loginpage = () => {
 
     // Basic validation to check if email and password are provided
     if (!email || !password) {
-      setError('Both email and password are required.');
+      toast.error('Both email and password are required.');
       return;
     }
 
@@ -32,10 +33,13 @@ const Loginpage = () => {
       // Attempt to sign in with the provided email and password using Firebase Authentication
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
-      navigate('/home'); // Redirect to the home page after successful login
+      toast.success('Login successful! Redirecting to home...');
+      setTimeout(() => {
+        navigate('/home'); // Redirect to the home page after successful login
+      }, 2000); // Delay the redirection to show the success message
     } catch (error) {
-      // Set an error message if login fails
-      setError('Invalid email or password.');
+      // Display error message if login fails
+      toast.error('Invalid email or password.');
     }
   };
 
@@ -50,9 +54,6 @@ const Loginpage = () => {
       {/* Login Form Container */}
       <div className="w-full max-w-sm bg-slate-900 shadow-md rounded-lg p-8 border border-slate-700">
         <h2 className="text-2xl font-bold mb-6 text-white">Login</h2>
-        
-        {/* Display error message if there is one */}
-        {error && <p className="text-red-500 mb-4">{error}</p>}
         
         {/* Login Form */}
         <form onSubmit={handleSubmit}>
@@ -104,6 +105,9 @@ const Loginpage = () => {
           </p>
         </form>
       </div>
+
+      {/* Toast Container for displaying notifications */}
+      <ToastContainer />
     </div>
   );
 };

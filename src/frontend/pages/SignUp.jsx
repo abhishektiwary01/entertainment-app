@@ -1,16 +1,17 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import for navigation
-import { auth } from '../../models/Firebase'; // Import auth instance for Firebase authentication
-import { MdMovieCreation } from 'react-icons/md'; // Import movie icon for branding
+import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../models/Firebase';
+import { MdMovieCreation } from 'react-icons/md';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SignupPage = () => {      
+const SignupPage = () => {
   // State hooks for managing form input values and error messages
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState(null);
-
+  
   // useNavigate hook for programmatic navigation
   const navigate = useNavigate();
 
@@ -24,9 +25,12 @@ const SignupPage = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       console.log('User registered successfully');
-      navigate('/loginpage'); // Redirect to login page after successful signup
+      toast.success('Registration successful! Redirecting to login...');
+      setTimeout(() => {
+        navigate('/loginpage'); // Redirect to login page after successful signup
+      }, 2000); // Delay the redirection to show the success message
     } catch (error) {
-      setError('Registration failed. Please try again.'); // Set error message if signup fails
+      toast.error('Registration failed. Please try again.'); // Show error toast if signup fails
     }
   };
 
@@ -36,12 +40,12 @@ const SignupPage = () => {
 
     // Validation checks
     if (!email || !password || !confirmPassword) {
-      setError('All fields are required'); // Error if any field is empty
+      toast.error('All fields are required'); // Error if any field is empty
       return;
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match'); // Error if passwords do not match
+      toast.error('Passwords do not match'); // Error if passwords do not match
       return;
     }
 
@@ -55,10 +59,12 @@ const SignupPage = () => {
         <MdMovieCreation size={48} className="text-red-600 mx-auto" aria-label="App Logo" />
         <p className="text-white text-3xl mt-2">Entertainment App</p>
       </div>
+      
       {/* Signup form container */}
       <div className="w-full max-w-sm bg-slate-900 shadow-md rounded-lg p-8 border border-slate-700">
         <h2 className="text-2xl font-bold mb-6 text-white">Sign Up</h2>
-        {error && <p className="text-red-500 mb-4">{error}</p>} {/* Display error message if any */}
+        
+        {/* Signup Form */}
         <form onSubmit={handleSubmit}>
           {/* Email input field */}
           <div className="mb-4">
@@ -73,6 +79,7 @@ const SignupPage = () => {
               required
             />
           </div>
+          
           {/* Password input field */}
           <div className="mb-4">
             <label htmlFor="password" className="block text-white mb-2">Password</label>
@@ -86,6 +93,7 @@ const SignupPage = () => {
               required
             />
           </div>
+          
           {/* Confirm Password input field */}
           <div className="mb-6">
             <label htmlFor="confirmPassword" className="block text-white mb-2">Confirm Password</label>
@@ -99,6 +107,7 @@ const SignupPage = () => {
               required
             />
           </div>
+          
           {/* Sign Up button */}
           <button
             type="submit"
@@ -106,6 +115,7 @@ const SignupPage = () => {
           >
             Sign Up
           </button>
+          
           {/* Link to login page */}
           <p className="text-white mt-3 flex items-center justify-center">
             Already have an account?
@@ -118,6 +128,9 @@ const SignupPage = () => {
           </p>
         </form>
       </div>
+
+      {/* Toast Container for displaying notifications */}
+      <ToastContainer />
     </div>
   );
 };
