@@ -45,31 +45,31 @@ Ensure you have the following installed on your machine:
 
 1. Clone the Repository
 
-git clone <repository-url>
-cd <repository-directory>
+* git clone <repository-url>
+* cd <repository-directory>
 
 2. Install Dependencies
 
-Navigate to the root directory of the project and install the required npm packages:
-npm install
+* Navigate to the root directory of the project and install the required npm packages:
+* npm install
 
 3. Set Up Firebase
 
-firebase login
-Initialize Firebase: Initialize Firebase in your project directory:
+* firebase login
+* Initialize Firebase: Initialize Firebase in your project directory:
 
-firebase init
+* firebase init
 
 4. Start the Application
 
-npm start
+* npm start
 
-The React application should open in your default web browser at http://localhost:3000.
+* The React application should open in your default web browser at http://localhost:3000.
 
 7. Verify the Application
-Open your web browser and go to http://localhost:3000 to ensure the app is running correctly. Check both the frontend and backend functionalities to confirm everything is working as expected.
+* Open your web browser and go to http://localhost:3000 to ensure the app is running correctly. Check both the frontend and backend functionalities to confirm everything is working as expected.
 
-Application folder structure
+# Application folder structure
 ```
 ├── public
 │ 
@@ -107,7 +107,7 @@ Application folder structure
 * Redux: For managing application state and ensuring smooth data flow.
 
 # Links
-* Deployment Link: 
+* Deployment Link: https://entertainment-app-theta-one.vercel.app/
 
 
 # Developed By
