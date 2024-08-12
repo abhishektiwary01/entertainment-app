@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
+import Navbar from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
 
 const Bookmarkmovie = ({ title, description, image }) => (
   <div className="bg-transparent shadow-lg rounded-lg p-3 w-60 sm:w-1/2 md:w-1/3 lg:w-1/5">

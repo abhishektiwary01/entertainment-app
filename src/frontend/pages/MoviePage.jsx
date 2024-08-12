@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
+import Navbar from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
 import { CiBookmarkCheck } from 'react-icons/ci';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom'; 

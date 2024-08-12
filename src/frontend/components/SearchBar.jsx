@@ -16,7 +16,7 @@ const SearchBar = () => {
         .then(response => {
           // Filter out results without a poster and limit to 6 results
           const filteredResults = response.data.Search
-            ? response.data.Search.filter(item => item.Poster !== 'N/A').slice(0, 3)
+            ? response.data.Search.filter(item => item.Poster !== 'N/A').slice(0, 6)
             : [];
           setResults(filteredResults);
         })
