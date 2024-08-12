@@ -28,7 +28,7 @@ const CardsData = ({ title, description, image, year, cast, rating, duration }) 
   };
 
   return (
-    <div className="bg-transparent shadow-lg rounded-lg h-40 w-60 ml-28 lg:ml-4 sm:ml-32 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 relative group overflow-hidden ">
+    <div className="bg-transparent shadow-lg rounded-lg h-40 w-60 ml-28 sm:ml-32 xl:ml-8 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 relative group overflow-hidden ">
       <img src={image} alt={title} className="w-full h-full object-cover rounded-xl" />
       <div className="absolute bottom-0 p-2 bg-gradient-to-t from-black via-transparent to-transparent w-full text-white text-shadow-lg">
         <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold">{title}</h2>
@@ -77,7 +77,7 @@ const RecommendedCard = ({ title, description, image, year, cast, rating, durati
   };
 
   return (
-    <div className="bg-transparent shadow-lg rounded-lg lg:ml-4 w-60 ml-28 sm:ml-32 h-48  sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 relative group overflow-hidden">
+    <div className="bg-transparent shadow-lg rounded-lg ml-28 sm:ml-32 xl:ml-8 w-60 h-48  sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 relative group overflow-hidden">
       <img src={image} alt={title} className="w-full h-32 object-cover rounded-xl" />
       <div className="absolute inset-0 flex flex-col justify-end p-2 bg-gradient-to-t from-black via-transparent to-transparent text-white">
         <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold">{title}</h2>
@@ -149,7 +149,7 @@ const CardContainer = () => {
   return (
     <div className="mx-auto max-w-full lg:max-w-screen-xl ">
       {/* Trending section */}
-      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-2 sm:ml-28 p-4">Trending</h1>
+      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 sm:ml-32 xl:ml-8  p-4">Trending</h1>
       <div className="flex flex-wrap justify-start gap-8 ">
         {cardsData.map((card, index) => (
           <CardsData
@@ -165,7 +165,7 @@ const CardContainer = () => {
         ))}
       </div>
       {/* Recommended section */}
-      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 lg:ml-2 sm:ml-28 p-4 mt-4">Recommended for you</h1>
+      <h1 className="text-2xl sm:text-3xl text-start text-white ml-28 sm:ml-32 xl:ml-8  p-4 mt-4">Recommended for you</h1>
       <div className="flex flex-wrap justify-start gap-4">
         {recommendedCards.map((card, index) => (
           <RecommendedCard
@@ -188,9 +188,9 @@ const CardContainer = () => {
 const Home = () => {
   return (
     <div>
-      <Navbar />
       <SearchBar />
       <CardContainer />
+      <Navbar />
     </div>
   );
 };

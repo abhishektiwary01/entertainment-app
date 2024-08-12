@@ -4,6 +4,7 @@ import { MdLocalMovies, MdMovieCreation } from 'react-icons/md'; //import movie 
 import { PiTelevisionBold } from 'react-icons/pi'; // import TV icons
 import { CiBookmarkCheck } from 'react-icons/ci'; // import bookmark icons
 import { NavLink } from 'react-router-dom';  // import nav link for links
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -64,12 +65,7 @@ const Navbar = () => {
               : 'text-slate-700 hover:text-red-700 transition-colors duration-300'
           }
         >
-          <img
-            className="w-12 h-12 mb-10 rounded-full overflow-hidden border-none bg-transparent cursor-pointer shadow-lg"
-            src="src/assets/Loginphoto.jpg"
-            alt="Login Image"
-            // Removed onClick handler for logout
-          />
+         <MdOutlineAccountCircle className="text-4xl mb-4 text-gray-600 hover:text-white "  />
         </NavLink>
         {isHovered && (
           <span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-3 bg-red-600 text-white text-xs sm:text-sm font-bold py-2 px-3 rounded-lg shadow-lg">
