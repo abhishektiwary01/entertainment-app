@@ -27,10 +27,10 @@ const SignupPage = () => {
       console.log('User registered successfully');
       toast.success('Registration successful! Redirecting to login...');
       setTimeout(() => {
-        navigate('/loginpage'); // Redirect to login page after successful signup
+        navigate('/home'); // Redirect to login page after successful signup
       }, 2000); // Delay the redirection to show the success message
     } catch (error) {
-      toast.error('Registration failed. Please try again.'); // Show error toast if signup fails
+      toast.error('Registration failed. Please try again.',error); // Show error toast if signup fails
     }
   };
 

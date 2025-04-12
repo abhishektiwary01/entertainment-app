@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-
+import Navbar from '../components/Navbar';
 const DetailPage = () => {
   // Use useLocation to get the state passed from the previous page
   const location = useLocation();
@@ -25,8 +25,11 @@ const DetailPage = () => {
   const movieDescription = `A thrilling adventure in the year ${Year}.`;
 
   return (
+  <>
+  
     <div className="relative min-h-screen flex items-center justify-center bg-black">
       {/* Container for movie details */}
+      
       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 lg:p-12 bg-black bg-opacity-70 text-white mt-10">
         {/* Layout for image and details */}
         <div className="flex flex-col lg:flex-row lg:space-x-8 mb-6 w-full max-w-screen-lg">
@@ -79,7 +82,7 @@ const DetailPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

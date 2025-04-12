@@ -16,8 +16,8 @@ const Bookmarkmovie = ({ title, description, image }) => (
 
 const Bookmarks = () => {
   const Bookmarkmovies = [
-    { title: 'The Great Lands', description: '2019 Movie', image: 'https://www.hdwallpaper.nu/wp-content/uploads/2015/09/479488215.jpg' },
-    { title: 'Simpsons', description: '2012 Movie', image: 'https://sm.ign.com/t/ign_latam/screenshot/t/the-simpso/the-simpsons-1989_tpgf.1080.jpg' },
+    { title: 'The Great Lands', description: '2019 Movie', image: '\CinepleX.png' },
+    { title: 'Simpsons', description: '2012 Movie', image: 'public\CinepleX.png' },
     { title: 'Oppenhiemer', description: '2023 Movie', image: 'https://i.ytimg.com/vi/COZ77BsWm4I/maxresdefault.jpg' },
     { title: 'Interstellar ', description: '2014 Movie', image: 'https://tse3.mm.bing.net/th?id=OIP.JymutQOaBSxOAXmuij9g-wAAAA&pid=Api&P=0&h=180' },
     { title: 'San Andreas ', description: '2015 Movie', image: 'https://tse1.mm.bing.net/th?id=OIP.lp7EEBlliLuCrAx2ivDw1gHaEK&pid=Api&P=0&h=180' },
@@ -29,6 +29,7 @@ const Bookmarks = () => {
     <div>
       <Navbar />
       <SearchBar />
+      <img src = ""></img>
       <div className="p-4 ml-28">
       <h1 className="text-2xl text-start text-white ml-3">Bookmarks</h1>
       <div className="flex flex-wrap justify-start">

@@ -5,6 +5,7 @@ import { PiTelevisionBold } from 'react-icons/pi'; // import TV icons
 import { CiBookmarkCheck } from 'react-icons/ci'; // import bookmark icons
 import { NavLink } from 'react-router-dom';  // import nav link for links
 import { MdOutlineAccountCircle } from "react-icons/md";
+import { BsCameraReels } from "react-icons/bs";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -50,7 +51,23 @@ const Navbar = () => {
       >
         <CiBookmarkCheck className="text-3xl mb-6" />
       </NavLink>
-
+      <NavLink
+        to="/criticpage"
+        className={({ isActive }) =>
+          isActive ? 'text-white' : 'text-slate-700 hover:text-red-700 transition-colors duration-300'
+        }
+      >
+      <BsCameraReels  className="text-2xl mb-6 " />
+      </NavLink>
+      <NavLink
+        to="/premiumpage"
+        className={({ isActive }) =>
+          isActive ? 'text-white' : 'text-slate-700 hover:text-red-700 transition-colors duration-300'
+        }
+      >
+      <MdMovieCreation className="text-3xl mb-6 text-yellow-500 " />
+      </NavLink>
+      
       {/* Profile Image with Logout */}
       <div
         className="relative mt-auto mb-6"
@@ -58,7 +75,7 @@ const Navbar = () => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <NavLink
-          to="/Loginpage"
+          to="/profile"
           className={({ isActive }) =>
             isActive
               ? 'text-white'
@@ -69,9 +86,10 @@ const Navbar = () => {
         </NavLink>
         {isHovered && (
           <span className="absolute left-full top-1/2 transform -translate-y-1/2 ml-3 bg-red-600 text-white text-xs sm:text-sm font-bold py-2 px-3 rounded-lg shadow-lg">
-            Log out
+            Account
           </span>
         )}
+        
       </div>
     </div>
   );
