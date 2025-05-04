@@ -27,7 +27,9 @@ const TvSeriesCard = ({ title, description, image, year, cast, rating, duration,
       } 
     });
   };
+  // const onBookmarkClick = ()=>{
 
+  // }
 
   return (
     <div className="relative bg-transparent shadow-lg rounded-lg m-3 ml-4 h-44 w-60 max-w-md group">

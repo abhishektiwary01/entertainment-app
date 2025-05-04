@@ -49,14 +49,14 @@ const Navbar = () => {
           isActive ? 'text-white' : 'text-slate-700 hover:text-red-700 transition-colors duration-300'
         }
       >
-        <CiBookmarkCheck className="text-3xl mb-6" />
+        {/* <CiBookmarkCheck className="text-3xl mb-6" />
       </NavLink>
       <NavLink
         to="/criticpage"
         className={({ isActive }) =>
           isActive ? 'text-white' : 'text-slate-700 hover:text-red-700 transition-colors duration-300'
         }
-      >
+      > */}
       <BsCameraReels  className="text-2xl mb-6 " />
       </NavLink>
       <NavLink
